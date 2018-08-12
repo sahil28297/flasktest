@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% block content %}
+  <article class="media content-section">
+    <div class="media-body">
+      <h2>Products</h2>
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Added By</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
+        {% for product in products %}
+        <tbody>
+          <tr>
+            <td><a class="article-title" href="{{ url_for('product', product_id=product.id) }}">{{ product.id }} </a></td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.author.username }}</td>
+            <td>{{ product.date_posted }}</td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+    </div>
+  </article>
+
+  <article class="media content-section">
+    <div class="media-body">
+      <h2>Location</h2>
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Location ID</th>
+            <th>Location Name</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        {% for location in locations %}
+        <tbody>
+
+          <tr>
+            <td><a class="article-title" href="{{ url_for('location', location_id=location.id) }}">{{ location.id }} </a></td>
+            <td>{{ location.location_name }}</td>
+            <td>{{ location.qty }} </td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+    </div>
+  </article>
+
+  <article class="media content-section">
+    <div class="media-body">
+      <h2>Product Movements</h2>
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Movement ID</th>
+            <th>Timestamp</th>
+            <th>From Location</th>
+            <th>TO Location</th>
+            <th>Product ID</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        {% for movement in movements %}
+        <tbody>
+
+          <tr>
+            <td><a class="article-title" href="{{ url_for('productmovement', movement_id=movement.id) }}">{{ movement.id }}</a></td>
+            <td>{{ movement.ts }}</td>
+            <td>{{ movement.from_location }}</td>
+            <td>{{ movement.to_location }}</td>
+            <td>{{ movement.pid }} </td>
+            <td>{{ movement.qty }} </td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+    </div>
+  </article>
+{% endblock content %}
