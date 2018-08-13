@@ -1,4 +1,4 @@
-# Simple Inventory Management System Using FLASK
+# Simple Inventory Management Application Using FLASK
 
 Inventory management with login and registration features.
 The applications uses sqlite database with the help of sqlalchemy
